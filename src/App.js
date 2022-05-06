@@ -1,25 +1,49 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
-
+import CardHolder from './components/cardHolder';
+import { Pagination } from './components/pagination';
+import { fetchPkm, fetchPkmType } from './redux/action.js';
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const dispatch = useDispatch();
+const [currentPage, setCurrentPage] = useState(1);
+const [postsPerPage] = useState(6);
+const [loading, setLoading] = useState(false);
+const poke = useSelector(state => state);
+
+useEffect(() => {
+dispatch(fetchPkm);
+},[dispatch])
+
+
+        
+
+    const paginate=(e)=>{
+    setCurrentPage(e)
+    }
+
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentPosts = poke.slice(indexOfFirstPost, indexOfLastPost);
+
+    if(Object.keys(currentPosts).length){
+        return (
+            <div className="App">
+                <CardHolder poke={currentPosts}/>
+                <Pagination postsPerPage={postsPerPage} totalPosts={poke.length} paginate={paginate}/>
+            </div>
+        )
+    }
+
+        return (
+                <div className="App">
+                    <div className='dropdown'>
+                    </div>
+                        <CardHolder loading={loading} poke={currentPosts}></CardHolder>
+                        <Pagination postsPerPage={postsPerPage} paginate={paginate} totalPosts={poke.length}></Pagination>
+                </div>
+        );
 }
+
 
 export default App;
