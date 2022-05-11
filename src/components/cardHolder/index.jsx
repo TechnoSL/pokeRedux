@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 import Card from "../card/index";
 import './index.css';  
 const CardHolder = ({poke, loading}) => {
@@ -8,8 +8,8 @@ const CardHolder = ({poke, loading}) => {
     }
     return (
         <div className="cardHolder">
-            {poke.map(poke => {
-                return <Card pokeData={poke}/>
+            {poke.map(p=> {
+                return <Card pokeData={p}/>
             })}
         </div>
     );

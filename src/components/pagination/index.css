@@ -1,15 +1,14 @@
 .pagination {
-    min-width: 100vh;
-    display: flex;
-    justify-content: space-between;
-    justify-self: center;
-    margin: 0;
-    padding: 0;
+    display: inline-block;
+    justify-content: center;
+    text-decoration: none;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     list-style: none;
-}
-a {
-    cursor: pointer;
-    user-select: none;
-    text-decoration: gold;
-    color: #fff;
+    padding: 0;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border: 1px solid #dee2e6;
+    color: whitesmoke;
 }

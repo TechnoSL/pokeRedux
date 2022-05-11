@@ -27,11 +27,10 @@ export const fetchPkmType = (type) => {
             }).json()
 
             if (response.data.types[0].type.name === type) {
-                pokemons.push(JSON.parse(response.data))
-                console.log(pokemons)
+                pokemons.push(response.data)
             }
             dispatch({
-                type: "SET_TYPE",
+                type: "SET_DATA",
                 payload: pokemons
             });
         }

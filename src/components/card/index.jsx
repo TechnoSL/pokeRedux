@@ -5,16 +5,22 @@ const Card = ({pokeData,_min,_max}) => {
     
     const [pokemon,setPokemon] = useState({});
     useEffect(()=>{
+        if(pokeData.url !== undefined){
         const data = fetch(`${pokeData.url}`)
-        .then(res => res.json()).then(pkm => {
-            setPokemon(pkm)
-            console.log(pkm)
-        })
-    },[])
-    if (Object.keys(pokemon).length === 0) {
-        return <div>Loading...</div>
+        .then(res => res.json()).then(res => {
+            setPokemon(res);
+        });
+        return
     }
-    console.log(pokeData)
+    setPokemon(pokeData);
+    },[pokeData]);
+
+    if (Object.keys(pokemon).length === 0) {
+        console.log("Loading...");
+        return <h1>Loading...</h1>
+    }
+
+    
     return (
         <div className="Card">
             <h1>{pokemon.name}</h1>

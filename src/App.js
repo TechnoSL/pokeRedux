@@ -4,15 +4,18 @@ import './App.css';
 import CardHolder from './components/cardHolder';
 import { Pagination } from './components/pagination';
 import { fetchPkm, fetchPkmType } from './redux/action.js';
+
+
 function App() {
 const dispatch = useDispatch();
 const [currentPage, setCurrentPage] = useState(1);
 const [postsPerPage] = useState(6);
 const [loading, setLoading] = useState(false);
 const poke = useSelector(state => state);
-
+console.log(poke);
 useEffect(() => {
-dispatch(fetchPkm);
+    dispatch(fetchPkm());
+
 },[dispatch])
 
 
@@ -26,24 +29,18 @@ dispatch(fetchPkm);
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = poke.slice(indexOfFirstPost, indexOfLastPost);
 
-    if(Object.keys(currentPosts).length){
         return (
             <div className="App">
-                <CardHolder poke={currentPosts}/>
-                <Pagination postsPerPage={postsPerPage} totalPosts={poke.length} paginate={paginate}/>
+            <div className="dropdown">
+        
             </div>
-        )
-    }
-
-        return (
-                <div className="App">
-                    <div className='dropdown'>
-                    </div>
-                        <CardHolder loading={loading} poke={currentPosts}></CardHolder>
-                        <Pagination postsPerPage={postsPerPage} paginate={paginate} totalPosts={poke.length}></Pagination>
-                </div>
+        <CardHolder loading={loading}poke={currentPosts}></CardHolder>
+        <Pagination postsPerPage={postsPerPage} paginate={paginate} totalPosts={poke.length}></Pagination>
+            </div>
+        
         );
-}
+        
+    }
 
 
 export default App;
