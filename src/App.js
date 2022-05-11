@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 import CardHolder from './components/cardHolder';
 import { Pagination } from './components/pagination';
-import { fetchPkm } from './redux/action.js';
+import { fetchPkm, fetchPkmType } from './redux/action.js';
 
 
 function App() {
@@ -14,8 +14,8 @@ const [loading] = useState(false);
 const poke = useSelector(state => state);
 console.log(poke);
 useEffect(() => {
-    dispatch(fetchPkm());
-
+    //dispatch(fetchPkm());
+    dispatch(fetchPkmType("fire"));
 },[dispatch])
 
 

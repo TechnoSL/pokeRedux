@@ -4,6 +4,7 @@ import './index.css';
 const CardHolder = ({poke, loading}) => {
 
     if (loading) {
+        console.log("loading");
         return <div>Loading...</div>
     }
     return (

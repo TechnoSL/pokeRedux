@@ -10,15 +10,16 @@ const Card = ({pokeData,_min,_max}) => {
         .then(res => res.json()).then(res => {
             setPokemon(res);
         });
-        return
+        setPokemon(pokeData);
     }
     setPokemon(pokeData);
     },[pokeData]);
 
     if (Object.keys(pokemon).length === 0) {
+ 
         return <h1>Loading...</h1>
     }
-
+    console.log(pokemon);
     
     return (
         <div className="Card">

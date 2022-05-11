@@ -1,4 +1,4 @@
-import {Axios} from "axios";
+import Axios from "axios";
 
 export const fetchPkm = () => {
 
@@ -24,16 +24,16 @@ export const fetchPkmType = (type) => {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 }
-            }).json()
+            })
 
             if (response.data.types[0].type.name === type) {
                 pokemons.push(response.data)
-                console.log(pokemons)
+            
             }
-            dispatch({
-                type: "SET_TYPE",
-                payload: pokemons
-            });
         }
+        dispatch({
+            type: "SET_DATA",
+            payload: pokemons
+        })
     }
 }
