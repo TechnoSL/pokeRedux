@@ -16,7 +16,6 @@ const Card = ({pokeData,_min,_max}) => {
     },[pokeData]);
 
     if (Object.keys(pokemon).length === 0) {
-        console.log("Loading...");
         return <h1>Loading...</h1>
     }
 

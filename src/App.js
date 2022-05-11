@@ -3,14 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 import CardHolder from './components/cardHolder';
 import { Pagination } from './components/pagination';
-import { fetchPkm, fetchPkmType } from './redux/action.js';
+import { fetchPkm } from './redux/action.js';
 
 
 function App() {
 const dispatch = useDispatch();
 const [currentPage, setCurrentPage] = useState(1);
 const [postsPerPage] = useState(6);
-const [loading, setLoading] = useState(false);
+const [loading] = useState(false);
 const poke = useSelector(state => state);
 console.log(poke);
 useEffect(() => {
