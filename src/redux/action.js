@@ -24,7 +24,11 @@ export const fetchPkmType = (type) => {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 }
-            })
+            }) 
+            if (type === "all") {
+                pokemons.push(response.data)
+                continue;
+            }
 
             if (response.data.types[0].type.name === type) {
                 pokemons.push(response.data)

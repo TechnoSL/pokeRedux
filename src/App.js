@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 import CardHolder from './components/cardHolder';
+import Dropdown from './components/dropdown';
 import { Pagination } from './components/pagination';
 import { fetchPkm, fetchPkmType } from './redux/action.js';
 
@@ -31,9 +32,7 @@ useEffect(() => {
 
         return (
             <div className="App">
-            <div className="dropdown">
-        
-            </div>
+            <Dropdown/>
         <CardHolder loading={loading}poke={currentPosts}></CardHolder>
         <Pagination postsPerPage={postsPerPage} paginate={paginate} totalPosts={poke.length}></Pagination>
             </div>
