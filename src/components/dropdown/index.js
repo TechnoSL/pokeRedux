@@ -4,7 +4,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import {fetchPokemons,fetchPokemonType} from '../../redux/action.js'
+import {fetchPkm,fetchPkmType} from '../../redux/action.js'
 import {Provider, useSelector,useDispatch} from "react-redux"
 const Dropdown = ()=>{
 
@@ -15,9 +15,9 @@ const Dropdown = ()=>{
 
     const handleChange = (event) => {
       setType(event.target.value);
-      dispatch(fetchPokemonType(event.target.value.toLowerCase()));
+      dispatch(fetchPkmType(event.target.value.toLowerCase()));
     };
-
+        
     return  <Box sx={{ minWidth: 120 }}>
    <FormControl style={{color: "white"}} fullWidth>
     <InputLabel id="demo-simple-select-label">All</InputLabel>
