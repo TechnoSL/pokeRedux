@@ -8,7 +8,7 @@ import {fetchPkm,fetchPkmType} from '../../redux/action.js'
 import {Provider, useSelector,useDispatch} from "react-redux"
 const Dropdown = ()=>{
 
-    const [type, setType] = React.useState('');
+    const [type, setType] = React.useState('all');
     const dispatch = useDispatch()
  const types = ["All","Normal","Fighting","Flying","Poison","Ground","Rock","Bug","Ghost"
  ,"Steel","Fire","Water","Grass","Eletric","Psychic","Ice","Dragon","Dark","Fairy"]
@@ -20,7 +20,7 @@ const Dropdown = ()=>{
         
     return  <Box sx={{ minWidth: 120 }}>
    <FormControl style={{color: "white"}} fullWidth>
-    <InputLabel id="demo-simple-select-label">All</InputLabel>
+    <InputLabel style={{color: "white"}} id="demo-simple-select-label">All</InputLabel>
     <Select
       labelId="demo-simple-select-label"
       id="demo-simple-select"
